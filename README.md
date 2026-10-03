@@ -1,20 +1,22 @@
 # Dastoor Storefront
 
-A responsive React storefront homepage for the existing Django e-commerce project. The design uses a warm light palette, Playfair Display headings, and DM Sans interface text.
+A responsive South Asian menswear category preview built with React and Vite.
 
 ## Run locally
-
-Requires Node.js 20.19+ or 22.12+.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Other checks: `npm run typecheck` and `npm run build`.
+Run `npm run typecheck` and `npm run build` for the project checks.
 
-## Current scope
+## Add or update a garment category
 
-This first slice is a frontend preview. It uses local sample product records and bundled photos; sample PKR prices are not live catalogue prices. Search, category filters, favorites, and the bag are local to the current page session. Newsletter submissions are not stored, and checkout is disabled.
+Edit `src/data/categories.ts`. The homepage navigation, category filters, search, cards, and footer links are generated from this typed list. Each entry includes its name, copy, image path, alt text, and image caption. Put new editorial images in `public/collections/` and reference them from a category entry.
 
-The existing Django backend remains separate in [E-Commerce](https://github.com/Muhammad-Faizullah/E-Commerce). The product and category list endpoints identified for the next integration step are `/content/Product/List/` and `/content/Category/list/`; this homepage does not call them yet.
+## Image and catalogue status
+
+The editorial category photographs in `public/collections/` were generated specifically for this preview; they were not copied from the Django backend or another brand's campaign. They illustrate garment categories only and do not represent confirmed products, stock, prices, or a live catalogue.
+
+The Django backend remains separate and unchanged. This frontend does not call its product or media endpoints and does not offer checkout.
