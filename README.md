@@ -15,6 +15,10 @@ Run `npm run typecheck` and `npm run build` for the project checks.
 
 Edit `src/data/categories.ts`. The homepage navigation, category filters, search, cards, and footer links are generated from this typed list. Each entry includes its name, copy, image path, alt text, and image caption. Put new editorial images in `public/collections/` and reference them from a category entry.
 
+## Account page preview
+
+The `/signin` and `/signup` routes are UI previews only. They validate form details locally, do not authenticate users or create accounts, and do not send or save submitted details.
+
 ## Image and catalogue status
 
 The editorial category photographs in `public/collections/` were generated specifically for this preview; they were not copied from the Django backend or another brand's campaign. They illustrate garment categories only and do not represent confirmed products, stock, prices, or a live catalogue.

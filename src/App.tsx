@@ -5,8 +5,9 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { ArrowDownRight, ArrowRight, Menu, Search, X } from 'lucide-react';
-import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
+import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import { garmentCategories } from '@/data/categories';
+import { SignInPage, SignUpPage } from '@/pages/account';
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ function Home() {
             <button onClick={() => scrollTo('our-way')} data-testid="nav-our-way">Our way</button>
           </nav>
           <div className="header-actions">
+            <Link href="/signin" className="header-signin" data-testid="link-header-signin">Sign in</Link>
             <button
               className="icon-action"
               aria-label={searchOpen ? 'Close category search' : 'Search categories'}
@@ -240,7 +242,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/signin" component={SignInPage} /><Route path="/signup" component={SignUpPage} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
