@@ -143,26 +143,15 @@ button:focus-visible,input:focus-visible,a:focus-visible { outline:2px solid #b9
  .footer-bottom{margin-top:25px;flex-wrap:wrap;line-height:1.7}.search-bar{padding:12px 17px}
 }
 
-/* Account pages — the same quiet editorial language as the storefront. */
+/* Account pages — simple forms using the storefront's existing palette. */
 .account-page { min-height:100dvh; background:#f7f4ec; color:#293a32; display:flex; flex-direction:column; }
 .account-topbar { height:74px; padding:0 clamp(20px,5vw,72px); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #e7e0d4; }
 .account-topbar .brand-mark { font-size:29px; }
 .account-back { color:#59675d; text-decoration:none; display:inline-flex; align-items:center; gap:9px; font-size:10px; text-transform:uppercase; letter-spacing:.13em; transition:color .2s; }
 .account-back:hover { color:#b96f52; }
-.account-main { width:min(1170px,100%); flex:1; margin:0 auto; padding:38px clamp(20px,5vw,72px) 54px; display:grid; grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr); gap:clamp(38px,8vw,112px); align-items:center; }
-.account-editorial { min-height:610px; position:relative; overflow:hidden; background:#dce2d7; }
-.account-editorial:before { content:"dastoor"; position:absolute; top:9%; left:-.08em; color:rgba(54,85,72,.07); font:600 clamp(100px,15vw,205px)/1 var(--app-font-serif); letter-spacing:-.08em; pointer-events:none; }
-.account-editorial:after { content:""; position:absolute; top:-110px; right:-76px; width:300px; height:300px; border:1px solid rgba(54,85,72,.16); border-radius:50%; box-shadow:0 0 0 32px rgba(54,85,72,.04),0 0 0 64px rgba(54,85,72,.025); pointer-events:none; }
-.account-brand-copy { position:absolute; z-index:1; left:clamp(24px,4vw,50px); right:24px; bottom:clamp(28px,4vw,48px); color:#293a32; }
-.account-brand-copy .eyebrow { color:#b96f52; }
-.account-brand-copy h2 { max-width:430px; margin:18px 0 11px; font:500 clamp(35px,4.4vw,54px)/1.02 var(--app-font-serif); letter-spacing:-.04em; }
-.account-brand-copy p { max-width:340px; margin:0; color:#626e62; font-size:11px; line-height:1.8; }
-.account-monogram { position:absolute; z-index:1; top:23px; left:25px; color:#365548; border:1px solid rgba(54,85,72,.4); border-radius:50%; width:54px; height:54px; display:grid; place-items:center; font:italic 20px var(--app-font-serif); }
+.account-main { width:min(100%,560px); flex:1; margin:0 auto; padding:42px 22px; display:flex; align-items:center; justify-content:center; }
 .account-form-wrap { width:100%; max-width:425px; justify-self:center; padding:10px 0; }
-.account-kicker { color:#b96f52; text-transform:uppercase; letter-spacing:.19em; font-size:9px; font-weight:700; display:flex; align-items:center; gap:10px; }
-.account-kicker:before { content:""; width:23px; height:1px; background:currentColor; }
-.account-heading { margin:17px 0 9px; color:#2f4037; font:500 clamp(39px,4.2vw,52px)/1.03 var(--app-font-serif); letter-spacing:-.04em; }
-.account-subtitle { margin:0 0 26px; max-width:365px; color:#74776d; font-size:12px; line-height:1.8; }
+.account-heading { margin:0 0 26px; color:#2f4037; font:500 clamp(36px,4.2vw,46px)/1.08 var(--app-font-serif); letter-spacing:-.04em; }
 .account-form { display:grid; gap:17px; }
 .account-field { display:grid; gap:8px; }
 .account-field label { color:#39483f; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
@@ -177,28 +166,17 @@ button:focus-visible,input:focus-visible,a:focus-visible { outline:2px solid #b9
 .account-submit { width:100%; height:49px; margin-top:3px; display:flex; align-items:center; justify-content:center; gap:10px; border:1px solid #365548; background:#365548; color:#f7f4ec; text-transform:uppercase; letter-spacing:.15em; font-size:10px; transition:background .2s,color .2s; }
 .account-submit:hover { background:#293f34; }
 .account-submit:disabled { cursor:wait; opacity:.7; }
-.account-service-note { margin-top:21px; padding:13px 14px; border-left:2px solid #b96f52; background:#eee9df; display:flex; align-items:flex-start; gap:10px; color:#646d61; font-size:10px; line-height:1.7; }
-.account-service-note svg { flex:0 0 auto; margin-top:1px; color:#9f684e; }
-.account-status { margin:14px 0 0; padding:12px 14px; background:#e4eadf; color:#365548; font-size:11px; line-height:1.6; }
-.account-switch { margin:22px 0 0; color:#77786d; font-size:11px; text-align:center; }
+.account-service-note { margin:13px 0 0; color:#77786d; font-size:10px; line-height:1.5; text-align:center; }
+.account-status { margin:12px 0 0; color:#365548; font-size:11px; line-height:1.5; text-align:center; }
+.account-switch { margin:20px 0 0; color:#77786d; font-size:11px; text-align:center; }
 .account-switch a { color:#365548; text-decoration:none; border-bottom:1px solid #aab2a6; margin-left:5px; padding-bottom:2px; font-weight:600; display:inline-flex; align-items:center; gap:4px; }
 .account-switch a:hover { color:#b96f52; }
-.account-footnote { border-top:1px solid #e5ded2; padding:16px clamp(20px,5vw,72px); display:flex; justify-content:space-between; gap:16px; color:#87877b; font-size:9px; letter-spacing:.08em; }
-.account-footnote strong { color:#526357; font-weight:600; }
-@media(max-width:800px) {
- .account-main { grid-template-columns:minmax(0,1fr) minmax(300px,.95fr); gap:32px; }
- .account-editorial { min-height:560px; }
-}
 @media(max-width:650px) {
  .account-topbar { height:64px; padding:0 17px; }.account-topbar .brand-mark { font-size:26px; }
  .account-back { font-size:9px; gap:6px; }
- .account-main { display:flex; flex-direction:column; align-items:stretch; gap:0; padding:18px 17px 38px; }
- .account-editorial { min-height:250px; order:2; margin-top:34px; }
-  .account-brand-copy { left:23px; bottom:23px; }.account-brand-copy h2 { font-size:34px; margin:11px 0 6px; }.account-brand-copy p { font-size:10px; }
-  .account-monogram { width:43px; height:43px; top:14px; left:14px; }
- .account-form-wrap { max-width:440px; order:1; padding:17px 2px 0; }
- .account-heading { font-size:42px; }.account-subtitle { margin-bottom:22px; }
- .account-footnote { flex-wrap:wrap; padding:14px 17px; line-height:1.6; }
+ .account-main { padding:32px 20px; }
+ .account-form-wrap { max-width:440px; padding:10px 2px; }
+ .account-heading { font-size:38px; margin-bottom:22px; }
 }
 @media(prefers-reduced-motion:reduce) {
  .account-back,.account-input,.account-submit { transition:none; }

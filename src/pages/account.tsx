@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { Link } from 'wouter';
-import { ArrowLeft, ArrowRight, Eye, EyeOff, Info } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import {
   Form,
   FormControl,
@@ -32,8 +32,7 @@ const signUpSchema = z.object({
 type SignInValues = z.infer<typeof signInSchema>;
 type SignUpValues = z.infer<typeof signUpSchema>;
 
-function AccountShell({ children, kind }: { children: React.ReactNode; kind: 'signin' | 'signup' }) {
-  const isSignUp = kind === 'signup';
+function AccountShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="account-page">
       <header className="account-topbar">
@@ -48,29 +47,16 @@ function AccountShell({ children, kind }: { children: React.ReactNode; kind: 'si
         <section className="account-form-wrap" aria-labelledby="account-heading">
           {children}
         </section>
-        <aside className="account-editorial" aria-label="Dastoor brand note">
-          <span className="account-monogram" aria-hidden="true">D</span>
-          <div className="account-brand-copy">
-            <div className="eyebrow">South Asian wear, considered</div>
-            <h2>{isSignUp ? <>A little more<br />room to belong.</> : <>For the days<br />that bring us together.</>}</h2>
-            <p>South Asian dressing, considered for familiar days and the gatherings worth remembering.</p>
-          </div>
-        </aside>
       </main>
-      <footer className="account-footnote">
-        <span><strong>Dastoor</strong> — an editorial wardrobe preview</span>
-        <span>{isSignUp ? 'A considered beginning' : 'Everyday wear, and beyond'}</span>
-      </footer>
     </div>
   );
 }
 
 function ServiceNotice() {
   return (
-    <div className="account-service-note" role="note" data-testid="notice-account-services">
-      <Info size={15} aria-hidden="true" />
-      <span>Account services are not connected in this preview. Your details stay in this form and are not sent or saved.</span>
-    </div>
+    <p className="account-service-note" role="note" data-testid="notice-account-services">
+      Preview only. Account services are inactive; details are not sent or saved.
+    </p>
   );
 }
 
@@ -84,14 +70,12 @@ export function SignInPage() {
   });
 
   const submitLocally = (_values: SignInValues) => {
-    setStatus('Your details pass local validation. No sign-in was performed.');
+    setStatus('Sign-in is not active in this preview.');
   };
 
   return (
-    <AccountShell kind="signin">
-      <div className="account-kicker">Welcome back</div>
-      <h1 id="account-heading" className="account-heading" data-testid="text-account-heading">Come on in.</h1>
-      <p className="account-subtitle">A preview of the Dastoor sign-in form.</p>
+    <AccountShell>
+      <h1 id="account-heading" className="account-heading" data-testid="text-account-heading">Sign in</h1>
       <Form {...form}>
         <form className="account-form" onSubmit={form.handleSubmit(submitLocally)} noValidate data-testid="form-signin">
           <FormField
@@ -115,7 +99,7 @@ export function SignInPage() {
                 <FormLabel>Password</FormLabel>
                 <div className="account-input-wrap">
                   <FormControl>
-                    <Input {...field} type={passwordVisible ? 'text' : 'password'} autoComplete="current-password" placeholder="At least 8 characters" className="account-input with-toggle" data-testid="input-signin-password" />
+                    <Input {...field} type={passwordVisible ? 'text' : 'password'} autoComplete="current-password" className="account-input with-toggle" data-testid="input-signin-password" />
                   </FormControl>
                   <button
                     className="password-toggle"
@@ -132,16 +116,12 @@ export function SignInPage() {
               </FormItem>
             )}
           />
-          <button className="account-submit" type="submit" data-testid="button-submit-signin">
-            Check details <ArrowRight size={14} aria-hidden="true" />
-          </button>
+          <button className="account-submit" type="submit" data-testid="button-submit-signin">Sign in</button>
         </form>
       </Form>
       <ServiceNotice />
       {status && <p className="account-status" role="status" data-testid="status-signin">{status}</p>}
-      <p className="account-switch">
-        New to Dastoor? <Link href="/signup" data-testid="link-to-signup">Create an account <ArrowRight size={12} aria-hidden="true" /></Link>
-      </p>
+      <p className="account-switch">New to Dastoor? <Link href="/signup" data-testid="link-to-signup">Sign up</Link></p>
     </AccountShell>
   );
 }
@@ -157,14 +137,12 @@ export function SignUpPage() {
   });
 
   const submitLocally = (_values: SignUpValues) => {
-    setStatus('Your details pass local validation. No account was created.');
+    setStatus('Account creation is not active in this preview.');
   };
 
   return (
-    <AccountShell kind="signup">
-      <div className="account-kicker">A place in the edit</div>
-      <h1 id="account-heading" className="account-heading" data-testid="text-account-heading">Make it yours.</h1>
-      <p className="account-subtitle">A preview of the Dastoor sign-up form.</p>
+    <AccountShell>
+      <h1 id="account-heading" className="account-heading" data-testid="text-account-heading">Sign up</h1>
       <Form {...form}>
         <form className="account-form" onSubmit={form.handleSubmit(submitLocally)} noValidate data-testid="form-signup">
           <FormField
@@ -201,7 +179,7 @@ export function SignUpPage() {
                 <FormLabel>Password</FormLabel>
                 <div className="account-input-wrap">
                   <FormControl>
-                    <Input {...field} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" placeholder="At least 8 characters" className="account-input with-toggle" data-testid="input-signup-password" />
+                  <Input {...field} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" className="account-input with-toggle" data-testid="input-signup-password" />
                   </FormControl>
                   <button
                     className="password-toggle"
@@ -226,7 +204,7 @@ export function SignUpPage() {
                 <FormLabel>Confirm password</FormLabel>
                 <div className="account-input-wrap">
                   <FormControl>
-                    <Input {...field} type={confirmationVisible ? 'text' : 'password'} autoComplete="new-password" placeholder="Enter your password again" className="account-input with-toggle" data-testid="input-signup-confirm-password" />
+                    <Input {...field} type={confirmationVisible ? 'text' : 'password'} autoComplete="new-password" className="account-input with-toggle" data-testid="input-signup-confirm-password" />
                   </FormControl>
                   <button
                     className="password-toggle"
@@ -243,16 +221,12 @@ export function SignUpPage() {
               </FormItem>
             )}
           />
-          <button className="account-submit" type="submit" data-testid="button-submit-signup">
-            Check details <ArrowRight size={14} aria-hidden="true" />
-          </button>
+          <button className="account-submit" type="submit" data-testid="button-submit-signup">Create account</button>
         </form>
       </Form>
       <ServiceNotice />
       {status && <p className="account-status" role="status" data-testid="status-signup">{status}</p>}
-      <p className="account-switch">
-        Already have an account? <Link href="/signin" data-testid="link-to-signin">Sign in <ArrowRight size={12} aria-hidden="true" /></Link>
-      </p>
+      <p className="account-switch">Already have an account? <Link href="/signin" data-testid="link-to-signin">Sign in</Link></p>
     </AccountShell>
   );
 }
