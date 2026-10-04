@@ -48,17 +48,10 @@ function AccountShell({ children, kind }: { children: React.ReactNode; kind: 'si
         <section className="account-form-wrap" aria-labelledby="account-heading">
           {children}
         </section>
-        <aside className="account-editorial" aria-label="Dastoor wardrobe editorial">
-          <img
-            src={isSignUp ? '/collections/kurtas.jpg' : '/collections/occasionwear.jpg'}
-            alt={isSignUp
-              ? 'Editorial portrait of a man in a muted sage kurta beneath a sunlit archway.'
-              : 'Editorial portrait of a man wearing a deep green traditional outfit in a historic stone courtyard.'}
-            data-testid="img-account-editorial"
-          />
-          <span className="account-image-index" aria-hidden="true">{isSignUp ? '02' : '01'}</span>
-          <div className="account-image-copy">
-            <div className="eyebrow">A wardrobe shaped by ritual</div>
+        <aside className="account-editorial" aria-label="Dastoor brand note">
+          <span className="account-monogram" aria-hidden="true">D</span>
+          <div className="account-brand-copy">
+            <div className="eyebrow">South Asian wear, considered</div>
             <h2>{isSignUp ? <>A little more<br />room to belong.</> : <>For the days<br />that bring us together.</>}</h2>
             <p>South Asian dressing, considered for familiar days and the gatherings worth remembering.</p>
           </div>
